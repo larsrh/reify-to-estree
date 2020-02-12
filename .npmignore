@@ -1,0 +1,6 @@
+src/
+dist/test
+.eslintrc.js
+*.config.js
+tsconfig.*
+*.tgz
