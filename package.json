@@ -1,6 +1,6 @@
 {
   "name": "reify-to-estree",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Reifying closed JS values to equivalent ESTree representations",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
