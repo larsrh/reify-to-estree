@@ -3,6 +3,7 @@ import {generate} from "astring";
 import fc, {Arbitrary} from "fast-check";
 import * as Reify from "../index";
 import {runInNewContext} from "vm";
+import {objectFromEntries} from "../util";
 
 function checkReified(expr: ESTree.Expression, t: any): void {
     const stmt: ESTree.ExpressionStatement = {
@@ -38,12 +39,12 @@ describe("Reify", () => {
         const gen = fc.array(fc.tuple(fc.fullUnicodeString(), fc.fullUnicodeString()));
         checkReify(
             gen,
-            array => Reify.any(Object.fromEntries(array)),
-            array => Object.fromEntries(array)
+            array => Reify.any(objectFromEntries(array)),
+            array => objectFromEntries(array)
         );
     });
     it("any(object)", () => {
-        const gen = fc.array(fc.tuple(fc.fullUnicodeString(), fc.fullUnicodeString())).map(entries => Object.fromEntries(entries));
+        const gen = fc.array(fc.tuple(fc.fullUnicodeString(), fc.fullUnicodeString())).map(entries => objectFromEntries(entries));
         checkReify(gen, Reify.any);
     });
 

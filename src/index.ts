@@ -1,4 +1,5 @@
 import * as ESTree from "estree";
+import {objectFromEntries} from "./util";
 
 export function string(s: string): ESTree.SimpleLiteral {
     return {
@@ -81,7 +82,7 @@ export function any(x: any): ESTree.Expression {
     }
 
     if (typeof x === "object") {
-        const map = Object.fromEntries(Object.entries(x).map(entry => {
+        const map = objectFromEntries(Object.entries(x).map(entry => {
             const [key, value] = entry;
             return [key, any(value)];
         }));
