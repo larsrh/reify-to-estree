@@ -21,8 +21,6 @@
   },
   "homepage": "https://github.com/larsrh/reify-to-estree#readme",
   "devDependencies": {
-    "@babel/preset-env": "^7.8.4",
-    "@babel/preset-typescript": "^7.8.3",
     "@rollup/plugin-node-resolve": "^8.0.0",
     "@rollup/plugin-sucrase": "^3.0.0",
     "@types/astring": "^1.3.0",
@@ -36,6 +34,7 @@
     "fast-check": "^1.22.2",
     "jest": "^26.0.0",
     "rollup": "^2.10.0",
+    "ts-jest": "^26.1.0",
     "typescript": "^3.7.5"
   }
 }
