@@ -5,3 +5,4 @@ dist/test
 *.config.js
 tsconfig.*
 *.tgz
+.idea
