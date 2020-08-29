@@ -49,7 +49,7 @@ export function object(fields: Record<string, ESTree.Expression>): ESTree.Object
     };
 }
 
-export function any(x: any): ESTree.Expression {
+export function any(x: unknown): ESTree.Expression {
     if (x === null)
         return {
             type: "Literal",
@@ -76,13 +76,11 @@ export function any(x: any): ESTree.Expression {
     if (typeof x === "string")
         return string(x);
 
-    if (Array.isArray(x)) {
-        const a = x as any[];
-        return array(a.map(item => any(item)));
-    }
+    if (Array.isArray(x))
+        return array(x.map(item => any(item)));
 
     if (typeof x === "object") {
-        const map = objectFromEntries(Object.entries(x).map(entry => {
+        const map = objectFromEntries(Object.entries(x as Record<string, unknown>).map(entry => {
             const [key, value] = entry;
             return [key, any(value)];
         }));
